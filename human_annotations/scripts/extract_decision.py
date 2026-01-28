@@ -12,6 +12,12 @@ import requests
 HUMAN_ANNOTATIONS_PATH = "human_annotations/human_conflicts_log.jsonl"
 
 
+def add_jsonl_record(path, new_record):
+    with open(path, 'a') as f:
+            json.dump(new_record, f)
+            f.write('\n')
+
+
 @dataclass(frozen=True)
 class GitHubContext:
     repo: str
@@ -176,8 +182,7 @@ def main(argv: list[str]) -> int:
         data["issue_url"] = ctx.issue_url
         record["decision"] = data
 
-        # TODO: persist record to HUMAN_ANNOTATIONS_PATH (left as in your original)
-        print(record)
+        add_jsonl_record(HUMAN_ANNOTATIONS_PATH, record)
         return 0
 
     # Parsing failed: comment + reopen
