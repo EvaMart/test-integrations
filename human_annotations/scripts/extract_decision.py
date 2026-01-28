@@ -18,7 +18,7 @@ body = issue.get("body", "")
 
 conflict_id_match = re.search(r"^> Conflict Id:\s*(\S+)\s*$", body, flags=re.MULTILINE)
 file_url_match = re.search(
-    r"""^> Conflict File:\s*
+    r"""^> Conflict File: \s*
         (?:\[[^\]]*\]\()?
         (https?://[^)\s]+)
         \)?\s*$
