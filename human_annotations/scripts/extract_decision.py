@@ -3,7 +3,6 @@ from datetime import datetime, timezone
 
 repo = sys.argv[1]
 issue_number = sys.argv[2]
-conflict_id = sys.argv[3]
 
 token = os.environ['GITHUB_TOKEN']
 api_base = f"https://api.github.com/repos/{repo}/issues/{issue_number}"
