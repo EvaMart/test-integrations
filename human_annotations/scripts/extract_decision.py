@@ -16,8 +16,8 @@ headers = {
 issue = requests.get(api_base, headers=headers).json()
 body = issue.get("body", "")
 
-conflict_id_match = re.search(r"^Conflict Id:\s*(\S+)\s*$", body, flags=re.MULTILINE)
-file_url_match = re.search(r"^Conflict File:\s*(https?://\S+)\s*$", body, flags=re.MULTILINE)
+conflict_id_match = re.search(r"^> Conflict Id:\s*(\S+)\s*$", body, flags=re.MULTILINE)
+file_url_match = re.search(r"^> Conflict File:\s*(https?://\S+)\s*$", body, flags=re.MULTILINE)
 
 if not conflict_id_match:
     raise ValueError("Conflict Id not found in issue body")
